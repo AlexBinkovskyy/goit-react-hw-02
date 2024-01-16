@@ -1,0 +1,32 @@
+.online {
+  color: green;
+}
+
+.offline {
+  color: red;
+}
+
+.item {
+  display: inline-block;
+  border: 2px solid #212121;
+  border-radius: 8px;
+  padding: 20px 15px;
+}
+
+.avatar {
+  margin-bottom: 10px;
+  width: 120px;
+}
+
+.name {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.status {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}
