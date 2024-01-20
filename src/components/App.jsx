@@ -1,23 +1,20 @@
-import { ProfileModule } from './Profile/Profile';
-import userData from '../refs/userData.json';
-import { FriendList } from './FriendList/FriendList';
-import friends from '../refs/friends.json';
-import { TransactionHistory } from './TransactionHistory/TransactionHistory';
-import transactions from '../refs/transactions.json';
+import { useState, useEffect } from 'react';
+import { Description } from './Header/Description';
+import { Options } from './Header/Options';
+import { Feedback } from './Header/Feedback';
 
-export function App() {
+export const App = () => {
+  const [feedbacks, setFeedbacks] = useState({
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  });
+
   return (
-    <div className="rootMain">
-      <ProfileModule
-        avatar={userData.avatar}
-        name={userData.username}
-        tag={userData.tag}
-        location={userData.location}
-        image={userData.avatar}
-        stats={userData.stats}
-      />
-      <FriendList friends={friends} />
-      <TransactionHistory items={transactions} />
+    <div>
+      <Description />
+      <Options/>
+      <Feedback/>
     </div>
   );
-}
+};
