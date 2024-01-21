@@ -5,11 +5,20 @@ import { Feedback } from './Feedback/Feedback';
 import { Notification } from './Notification/Notification';
 
 export const App = () => {
-  const [feedbacks, setFeedbacks] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
+  const [feedbacks, setFeedbacks] = useState(() => {
+    const localeStorageFeedBacks = window.localStorage.getItem('feedbacks');
+    return localeStorageFeedBacks !== null
+      ? JSON.parse(localeStorageFeedBacks)
+      : {
+          good: 0,
+          neutral: 0,
+          bad: 0,
+        };
   });
+
+  useEffect(() => {
+    window.localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+  }, [feedbacks]);
 
   function setFeedbGood() {
     setFeedbacks(feedbacks => ({
@@ -32,7 +41,7 @@ export const App = () => {
     }));
   }
 
-  function setFeedbreset() {
+  function setFeedbReset() {
     setFeedbacks({
       good: 0,
       neutral: 0,
@@ -40,11 +49,9 @@ export const App = () => {
     });
   }
 
-  let checkFeedB;
-  feedbacks.good || feedbacks.neutral || feedbacks.bad
-    ? (checkFeedB = true)
-    : (checkFeedB = false);
-
+  const checkFeedB = Boolean(
+    feedbacks.good || feedbacks.neutral || feedbacks.bad
+  );
   return (
     <div>
       <Description />
@@ -52,8 +59,8 @@ export const App = () => {
         setFeedbGood={setFeedbGood}
         setFeedbNeutral={setFeedbNeutral}
         setFeedbBad={setFeedbBad}
-        reset={checkFeedB}
-        setFeedbreset={setFeedbreset}
+        checkFeedB={checkFeedB}
+        setFeedbReset={setFeedbReset}
       />
       {checkFeedB ? (
         <Feedback

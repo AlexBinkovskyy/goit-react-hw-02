@@ -1,12 +1,11 @@
 import css from './Options.module.css';
-import { useEffect } from 'react';
 
 export function Options({
   setFeedbGood,
   setFeedbNeutral,
   setFeedbBad,
-  reset,
-  setFeedbreset,
+  checkFeedB,
+  setFeedbReset,
 }) {
   return (
     <div className={css.options}>
@@ -19,8 +18,8 @@ export function Options({
       <button type="button" className={css.button} onClick={setFeedbBad}>
         Bad
       </button>
-      {reset && (
-        <button type="button" className={css.button} onClick={setFeedbreset}>
+      {checkFeedB && (
+        <button type="button" className={css.button} onClick={setFeedbReset}>
           Reset
         </button>
       )}
