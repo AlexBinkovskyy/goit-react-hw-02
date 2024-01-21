@@ -20,26 +20,13 @@ export const App = () => {
     window.localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
   }, [feedbacks]);
 
-  function setFeedbGood() {
+  function setNewFeedback(type) {
     setFeedbacks(feedbacks => ({
       ...feedbacks,
-      good: feedbacks.good + 1,
+      [type]: feedbacks[type] + 1,
     }));
   }
 
-  function setFeedbNeutral() {
-    setFeedbacks(feedbacks => ({
-      ...feedbacks,
-      neutral: feedbacks.neutral + 1,
-    }));
-  }
-
-  function setFeedbBad() {
-    setFeedbacks(feedbacks => ({
-      ...feedbacks,
-      bad: feedbacks.bad + 1,
-    }));
-  }
 
   function setFeedbReset() {
     setFeedbacks({
@@ -56,9 +43,7 @@ export const App = () => {
     <div>
       <Description />
       <Options
-        setFeedbGood={setFeedbGood}
-        setFeedbNeutral={setFeedbNeutral}
-        setFeedbBad={setFeedbBad}
+        setNewFeedback={setNewFeedback}
         checkFeedB={checkFeedB}
         setFeedbReset={setFeedbReset}
       />

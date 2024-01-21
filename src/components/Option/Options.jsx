@@ -1,21 +1,27 @@
 import css from './Options.module.css';
 
-export function Options({
-  setFeedbGood,
-  setFeedbNeutral,
-  setFeedbBad,
-  checkFeedB,
-  setFeedbReset,
-}) {
+export function Options({ setNewFeedback, checkFeedB, setFeedbReset }) {
   return (
     <div className={css.options}>
-      <button type="button" className={css.button} onClick={setFeedbGood}>
+      <button
+        type="button"
+        className={css.button}
+        onClick={() => setNewFeedback('good')}
+      >
         Good
       </button>
-      <button type="button" className={css.button} onClick={setFeedbNeutral}>
+      <button
+        type="button"
+        className={css.button}
+        onClick={() => setNewFeedback('neutral')}
+      >
         Neutral
       </button>
-      <button type="button" className={css.button} onClick={setFeedbBad}>
+      <button
+        type="button"
+        className={css.button}
+        onClick={() => setNewFeedback('bad')}
+      >
         Bad
       </button>
       {checkFeedB && (
